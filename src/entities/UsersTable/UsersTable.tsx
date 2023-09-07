@@ -4,16 +4,15 @@ import TableBody from '@mui/material/TableBody';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import Paper from '@mui/material/Paper';
-import {IUser} from "../../../shared/types";
-import {StyledTableCell, StyledTableRow, TableHeader} from "../../../shared/styles/componnents";
+import {StyledTableCell, StyledTableRow, TableHeader} from "../../shared/styles/componnents";
 import {Grid} from "@mui/material";
 import TableCell from "@mui/material/TableCell";
+import {useContext} from "react";
+import {UsersStoreContext} from "../../app/StoreProvider";
 
-export default function UsersTable({users, handlePickUser, pickedUserID}: {
-    users: IUser[] | null,
-    pickedUserID: number | null,
-    handlePickUser: ({pickedUserID}: { pickedUserID: number }) => void
-}) {
+export function UsersTable() {
+    const {pickedUserID,handlePickUser, users} = useContext(UsersStoreContext);
+
     return (
         <Grid
             sx={{

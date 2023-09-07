@@ -11,21 +11,20 @@ import {FormField} from "../../../shared/components/Input/FormField";
 import {IUser} from "../../../shared/types";
 import {useForm} from "../../../shared/hooks/useForm";
 import * as React from "react";
-import {ToggleThemeButton} from "../../../app/ThemeProvider/ui/ToggleThemeButton";
+import {ToggleThemeButton} from "../../../app/ThemeProvider/ToggleThemeButton";
 import {Button, TextField, Checkbox} from "../../../shared/styles/componnents";
-import {useEffect} from "react";
+import {useContext} from "react";
+import {UsersStoreContext} from "../../../app/StoreProvider";
 
-export function ViewController({handleAddUser, handleDeleteUser}: {
-                                   handleAddUser: ({newUser}: { newUser: IUser }) => void
-                                   handleDeleteUser: ({userId}: { userId: number }) => void
-                               }
-) {
+export function ViewController() {
     const theme = useTheme();
+    const {handleAddUser,handleDeleteUser} = useContext(UsersStoreContext);
+
     const form: UseFormReturn<IUser> = useForm<IUser>({
         schema: ViewControllerSchema,
         defaultValues: defaultValues
     });
-    const {register, handleSubmit, reset, getValues, formState} = form;
+    const {register, handleSubmit, reset, formState} = form;
     const {errors} = formState;
 
     const onSubmit: SubmitHandler<IUser> = (newUser) => {
@@ -127,7 +126,7 @@ export function ViewController({handleAddUser, handleDeleteUser}: {
                 <ToggleThemeButton/>
                 <Button
                     theme={theme}
-                    onClick={(e) => handleDeleteUser({userId: Number(e.currentTarget.id)})}
+                    onClick={handleDeleteUser}
                 >
                     Delete
                 </Button>

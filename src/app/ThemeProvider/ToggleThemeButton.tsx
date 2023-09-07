@@ -1,8 +1,7 @@
 import * as React from "react";
-import {ColorModeContext} from "../lib/ThemeContext";
+import {ColorModeContext} from "./ThemeContext";
 import {FormControl} from "@mui/material";
-import {Switch, FormLabel} from "../../../shared/styles/componnents";
-
+import {Switch, FormLabel} from "../../shared/styles/componnents";
 export function ToggleThemeButton() {
     const colorMode = React.useContext(ColorModeContext);
     return (

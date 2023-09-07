@@ -1,1 +1,1 @@
-export * from './ui/UserTable'
+export * from './UsersTable'

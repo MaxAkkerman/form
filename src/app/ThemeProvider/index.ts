@@ -1,4 +1,4 @@
-import { ToggleColorMode } from './ui/ThemeProvider';
-import { ColorModeContext } from './lib/ThemeContext';
+import { ToggleColorMode } from './ThemeProvider';
+import { ColorModeContext } from './ThemeContext';
 
 export { ToggleColorMode, ColorModeContext };
